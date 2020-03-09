@@ -641,6 +641,43 @@ figure figcaption {
 .to-animate-2, .js
 .animate-box {
   opacity: 0;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.separator {
+  border: solid 1px black;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.filter-selector {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  margin: 4px 0;  
+}
+
+.filter-selector:hover {
+  font-weight: 600;
+}
+
+.filter-selector.active {
+  text-decoration: underline;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.filter-selector:focus {
+  outline: 0;
 }
 
 .fh5co-nav-toggle {
