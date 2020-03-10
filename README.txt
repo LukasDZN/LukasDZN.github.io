@@ -1,1 +1,1 @@
-Blog website hosted on Github Pages
+Blog website hosted on Github Pages by Lukas Dzenkauskas
