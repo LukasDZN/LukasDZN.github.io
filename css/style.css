@@ -33,11 +33,11 @@ body.fh5co-overflow {
 
 ::selection {
   color: #fff;
-  background: #f7c873;
+  background: #E89005;
 }
 
 a {
-  color: #f7c873;
+  color: #E89005;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -51,6 +51,17 @@ a:hover, a:focus, a:active {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display", times, serif;
   color: #000;
+}
+
+/*Removed h1 and h3 from function above*/
+h1 {
+  font-family: "Playfair Display", times, serif;
+  color: #0B5351;
+}
+
+h3 {
+  font-family: "Playfair Display", times, serif;
+  color: #2176AE;
 }
 
 p {
@@ -401,12 +412,14 @@ p {
 }
 .fh5co-post-entry article a img {
   opacity: 1;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 2s;
+  -o-transition: 2s;
+  /*transition: 0.5s;*/
 }
 .fh5co-post-entry article a:hover img {
-  opacity: .4;
+  /*opacity: .4;*/
+    -webkit-filter: saturate(1);
+    filter: saturate(1.7);
 }
 .fh5co-post-entry article figure {
   margin-bottom: 30px;
@@ -434,7 +447,7 @@ p {
 .fh5co-post-entry article .fh5co-meta {
   font-size: 16px;
   font-family: "Roboto", arial, sans-serif;
-  color: #999999;
+  color: #2176AE;
   margin-bottom: 20px;
   display: block;
 }
@@ -644,6 +657,10 @@ figure figcaption {
   display: none;
 }
 
+.animate-box-2 {
+  opacity: ;
+}
+
 .show {
   display: block;
 }
@@ -671,7 +688,7 @@ figure figcaption {
 }
 
 .filter-selector.active {
-  text-decoration: underline;
+  text-decoration:;
   font-size: 18px;
   font-weight: 600;
 }
