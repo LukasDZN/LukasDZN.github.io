@@ -52,6 +52,7 @@
 	// Document on load.
 	$(function(){
 		filterSelection("all");
+		loadButtons();
 	});
 
 
