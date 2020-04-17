@@ -1433,8 +1433,17 @@ img {
 
 .img-responsive {
   display: block;
-  max-width: 100%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mano */
+.img-wide {
+    display: block;
+    position: relative;
+    left: -200px;
+    top: auto;
 }
 
 .img-rounded {
