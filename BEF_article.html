@@ -83,18 +83,75 @@
 						<div class="col-md-12 animate-box-2">
 				            <p>
                             <br><a href="/BEF_project.html">Full project</a> and <a href="https://github.com/LukasDZN/BEF_project">repository</a>.</p>
-							<h2>All about that risk</h2>
-                            <p>In progress...</p>
+							<h2>Introduction</h2>
+                            <p>A little while ago I got the hold of a dataset of my fellow behavioural and experimental finance course students which were asked to make a bet from 0 to 100 (imaginary) euros, with a 1/6 chance to win 8x the amount bet, for 15 periods. The budget for each period of betting is 100. Any amount that is not used for betting for each period is kept as a ‘winning’. Additionally, age, gender and nationality data was provided.</p>
+                            <p>Given this data, I thought of a few questions that might be interesting to answer.
+                            It is often assumed that younger people are more impulsive and have tendency to take on more risks. But after all, the age of 18 to 22 is a time for significant personal growth and maturing. So, is it to possible observe a significant difference in the degree of risk taking in such a relatively short period of time? Let’s set the first null and alternative hypotheses: 
+                            <br><i>Ho</i>: Age has no effect on the average bet amount.
+                            <br><i>Ha</i>: Older students will bet less on average.
+                            <p>
+                            Additionally, since the gender of each participant is available, we can look into the role it plays when faced with financial risk taking. Although this has been shown by numerous studies, we can try and replicate the results in a more specific context dataset. The hypotheses are as follows:
+                            <br><i>Ho</i>: Gender has no effect on the average bet amount.
+                            <br><i>Ha</i>: Women will choose to bet less on average than men.
+                            <p>
+                            And finally, we also have nationality. Although it only says whether the participant is Dutch or not, we can investigate if the pragmatic Dutch thinking plays a role in risk taking compared to the rest of the nationalities. Since the expected value (chance of winning multiplied by amount) is higher when betting more, in purely pragmatic sense, it should be more reasonable to bet more.
+                            <br><i>Ho</i>: Nationality has no effect on the average bet amount.
+                            <br><i>Ha</i>: Dutch students will choose to bet more on average than other nationalities.</p>
+                            <h2>Data exploration</h2>
+                            <h4>Distributions</h4>
+                            <figure class="animate-box-2">
+					           <img src="images/BEF_article/histogram.png" alt="Image" class="img-responsive">
+				            </figure>
+                            <figure class="animate-box-2">
+					           <img src="images/BEF_article/Count%20vs%20age%20(hist).png" alt="Image" class="img-responsive">
+				            </figure>
+                            <h4>Correlations</h4>
+                            <h5>Bet by gender</h5>
+                            <figure class="animate-box-2">
+					           <img src="images/BEF_article/Average%20bet%20by%20gender.png" alt="Image" class="img-responsive">
+				            </figure>
+                            <p>We can clearly see a difference between the genders, it is a good sign that a relationship will be found during the regression analysis.<br>
+                            Furthermore, we can also visualize the same data using a histogram, which can help see the points which were originally overlaid (for example where men bet exactly 100 Eur each time).</p>
                             <figure class="animate-box-2">
 					           <img src="images/BEF_article/Average%20bet%20by%20age%20(hist).png" alt="Image" class="img-responsive">
 				            </figure>
+                            <h5>Bet by nationality</h5>
+                            <figure class="animate-box-2">
+					           <img src="images/BEF_article/Average%20bet%20by%20nationality.png" alt="Image" class="img-responsive">
+				            </figure>
+                            <p>There's little that can be derived from this plot, especially since the sample size differs quite a lot between the nationalities. Overall the distribution seems similar.</p>
+                            <h5>Bet by age</h5>
+                            <figure class="animate-box-2">
+					           <img src="images/BEF_article/Average%20bet%20by%20age.png" alt="Image" class="img-responsive">
+				            </figure>
+                            <p>Starting from the age of 21 up until 23 (or perhaps even 24), a noticeable decline in risk-taking behaviour can be observed. Further analysis is difficult due to a small number of observations.</p>
+                            <p>Furthermore indication of correlations:</p>
+                            <figure class="animate-box-2">
+					           <img src="images/BEF_article/Correlation%20matrix%20heatmap.png" alt="Image" class="img-responsive">
+				            </figure>
+                            <p>There is slight correlation between the explanatory variables: the nationality (dutch) and gender (female) variables. Which is a concern for a regression model, but was dismissed after checking VIF values.<br> Generally, we can see that there's negative correlations between the average bet and age &amp;gender, while nationality doesn't seem to be correlated.</p>
+                            <h2>Inferential analysis</h2>
+                            <table style="text-align:center"><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="1"><em>Dependent variable:</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td></tr><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Age</td><td>-6.24<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(2.361)</td></tr><tr><td style="text-align:left">const</td><td>199.57<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(53.834)</td></tr><tr><td style="text-align:left">dutch</td><td>-6.129<sup></sup></td></tr><tr><td style="text-align:left"></td><td>(6.334)</td></tr><tr><td style="text-align:left">female</td><td>-30.437<sup>***</sup></td></tr><tr><td style="text-align:left"></td><td>(5.322)</td></tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Observations</td><td>74.0</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.312</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.282</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>26.054(df = 70.0)</td></tr><tr><td style="text-align: left">F Statistic</td><td>[[13.68]]<sup>***</sup>(df = 3.0; 70.0)</td></tr><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td>
+                             <td colspan="1" style="text-align: right">
+                              <sup>*</sup>p&lt;0.1;
+                              <sup>**</sup>p&lt;0.05;
+                              <sup>***</sup>p&lt;0.01
+                             </td></tr></table>
+                            <br> <br>
+                            <h5>Results</h5>
+                            <p>I find that Gender and Age are both statistically significant and therefore reject the age and gender null hypotheses, which give support to the alternative hypotheses which state that older students and women are more risk-averse and will choose to bet more. In terms of nationality, we find that it is statistically insignificant with a p-value of 0.33, therefore we fail to reject the null hypothesis stating that nationality (being Dutch, versus being foreign) has no effect on risk-taking behaviour.</p>
+                            <h2>Conclusion</h2>
+                            <p>Maybe it is not the question whether either of the groups were more risk taking &amp; adventurous, but rather how seriously they took the thought experiment. Perhaps if the outcomes were more realistic – by having a real world impact on individual’s well-being, maybe then we would see different results. This is one of the issues that behavioural scientists encounter in the experimental design of the tests.<br>
+
+                            Even though the predictive ability is questionable due to the sample size, data collection methods, and a sample bias, due to a group of people that should be more financially literate than other field students, nonetheless, it is a fun (and at least descriptive) analysis of the student risk-taking behaviour.</p>
 						</div>
-                    
 				</div>
 			</article>
 		</div>
+            <div class="col-lg-12 col-md-12 text-center">
+            <a href="/index.html"><small>Homepage</small></a>
+            </div>
 	</div>
-
 	<footer id="fh5co-footer">
 		<p><small>Written by L.D.<br></small></p> <!-- ########### End signature ##########-->
 	</footer>
